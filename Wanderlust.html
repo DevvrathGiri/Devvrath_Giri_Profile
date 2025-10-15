@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Wanderlust</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/12f7b1f47d.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Styles - Match Main Portfolio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1e1e1e;
+            font-family: 'Poppins', sans-serif;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation Bar */
+        #header {
+            background-color: #2a2a2a;
+            padding: 20px 0;
+            border-bottom: 2px solid #3a3a3a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        #header nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        #header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        #header nav ul li a {
+            color: #a0a0a0;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        #header nav ul li a:hover {
+            color: #FFBF00;
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            position: relative;
+            height: 450px;
+            background: url('work1.webp') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Overlay Effect */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(41, 128, 185, 0.7));
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+
+        .hero:hover::before {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(41, 128, 185, 0.5));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, visibility 0s 0.5s, transform 0.5s ease;
+        }
+
+        .hero:hover .hero-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, visibility 0s 0s, transform 0.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-top: 15px;
+            line-height: 1.6;
+            color: #f0f2f5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Project Details Container */
+        .project-wrapper {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        #project-details {
+            background-color: #2a2a2a;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Project Info Header */
+        .project-info-header {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #3a3a3a;
+        }
+
+        .info-item {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .info-item label {
+            display: block;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .info-item .value {
+            color: #e0e0e0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        #project-details h2 {
+            font-size: 2rem;
+            color: #FFBF00;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        #project-details h2:first-child {
+            margin-top: 0;
+        }
+
+        #project-details h2::after {
+            content: "";
+            width: 60px;
+            height: 4px;
+            background-color: #FFBF00;
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+        }
+
+        #project-details p {
+            font-size: 16px;
+            color: #a0a0a0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        #project-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        #project-details ul li {
+            padding: 12px 0;
+            font-size: 16px;
+            color: #a0a0a0;
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+
+        #project-details ul li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #FFBF00;
+            font-size: 16px;
+            position: absolute;
+            left: 0;
+            top: 12px;
+        }
+
+        #project-details ul li strong {
+            color: #e0e0e0;
+        }
+
+        /* Tech Stack Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background-color: rgba(255, 191, 0, 0.15);
+            color: #FFBF00;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 191, 0, 0.3);
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            margin-right: 15px;
+            padding: 14px 28px;
+            background-color: #FFBF00;
+            color: #1e1e1e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 191, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(41, 128, 185, 0.4);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #2a2a2a;
+            color: #a0a0a0;
+            margin-top: 60px;
+            border-top: 2px solid #3a3a3a;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer i {
+            color: #ff004f;
+            margin: 0 5px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hero {
+                height: 350px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+
+            #header nav ul {
+                gap: 15px;
+                justify-content: center;
+            }
+
+            #header nav ul li a {
+                font-size: 14px;
+            }
+
+            #project-details {
+                padding: 30px 25px;
+            }
+
+            .project-info-header {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            #project-details h2 {
+                font-size: 1.5rem;
+            }
+
+            #project-details p,
+            #project-details ul li {
+                font-size: 15px;
+            }
+
+            .tech-stack {
+                gap: 8px;
+            }
+
+            .tech-tag {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero {
+                height: 280px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            #project-details {
+                padding: 25px 20px;
+            }
+
+            #project-details h2 {
+                font-size: 1.3rem;
+                margin-top: 25px;
+            }
+
+            #project-details p,
+            #project-details ul li {
+                font-size: 14px;
+            }
+
+            #project-details ul li {
+                padding-left: 25px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+                display: block;
+                margin-right: 0;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            #header nav ul {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section (Navigation Bar) -->
+    <div id="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#work">Work</a></li>
+                <!-- <li><a href="index.html#contact">Contact</a></li> -->
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Enhanced Hero Section with Overlay -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Wanderlust</h1>
+            <p>Your ultimate travel companion for discovering, planning, and sharing unforgettable journeys</p>
+        </div>
+    </div>
+
+    <!-- Project Content Section -->
+    <div class="project-wrapper">
+        <div id="project-details">
+            
+            <!-- Project Info Header -->
+            <div class="project-info-header">
+                <div class="info-item">
+                    <label>Team Size</label>
+                    <div class="value">1 (Solo Project)</div>
+                </div>
+                <div class="info-item">
+                    <label>Project Type</label>
+                    <div class="value">Full-Stack Web Application</div>
+                </div>
+            </div>
+
+            <h2>Project Overview</h2>
+            <p>Wanderlust is a comprehensive full-stack travel platform designed to revolutionize how travelers discover, plan, and share their adventures. This dynamic web application combines intuitive user interfaces with powerful backend functionality to create a seamless experience for property listing, booking management, and community-driven reviews. Built with modern web technologies, Wanderlust enables travelers to explore unique accommodations, connect with hosts, and share experiences while ensuring data security and reliability throughout the entire user journey.</p>
+
+            <h2>Technologies Used</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">Passport.js</span>
+                <span class="tech-tag">Bootstrap</span>
+            </div>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Responsive User Interface:</strong> Designed and implemented fully responsive interfaces using HTML5, CSS3, and JavaScript, ensuring seamless user experience across all devices including desktops, tablets, and mobile phones with adaptive layouts and touch-friendly interactions.</li>
+                <li><strong>RESTful API Architecture:</strong> Developed comprehensive RESTful APIs using Node.js and Express.js to handle all server-side logic, including user authentication, property management, booking operations, and review systems with clean, maintainable code structure.</li>
+                <li><strong>MongoDB Database Integration:</strong> Integrated MongoDB as the primary database solution to store user information, property details, booking records, and reviews, ensuring data integrity, security, and optimal query performance through efficient schema design.</li>
+                <li><strong>User Authentication & Authorization:</strong> Implemented secure user registration and login system with Passport.js, featuring role-based access control, password encryption, and session management to protect user accounts and sensitive data.</li>
+                <li><strong>Property Listing Management:</strong> Comprehensive property management system allowing hosts to create, edit, and delete their listings with detailed information including descriptions, amenities, pricing, location data, and high-quality images.</li>
+                <li><strong>Review and Rating System:</strong> Built-in community feedback mechanism enabling users to post detailed reviews and ratings for properties they've visited, helping future travelers make informed decisions while fostering trust within the platform.</li>
+                <li><strong>Advanced Search and Filtering:</strong> Powerful search functionality with filters for location, price range, amenities, property type, and guest capacity, making it easy for users to find their perfect accommodation.</li>
+                <li><strong>Booking Management:</strong> End-to-end booking system handling reservation requests, availability checking, booking confirmations, and booking history tracking with real-time updates to prevent double bookings.</li>
+                <li><strong>Interactive Map Integration:</strong> Location-based features displaying properties on interactive maps, helping users visualize property locations and explore nearby attractions and amenities.</li>
+                <li><strong>User Profiles:</strong> Personalized user profiles showcasing booking history, saved properties, posted reviews, and for hosts, their property listings with comprehensive dashboards for easy management.</li>
+            </ul>
+
+            <h2>Technical Implementation</h2>
+            <ul>
+                <li><strong>Frontend Development:</strong> Built with React.js for component-based architecture, enabling reusable UI components, efficient state management, and smooth single-page application experience with optimized rendering performance.</li>
+                <li><strong>Backend Architecture:</strong> Robust Node.js and Express.js server infrastructure handling API routes, middleware processing, error handling, and business logic with modular design for scalability and maintainability.</li>
+                <li><strong>Database Design:</strong> MongoDB schema architecture featuring collections for users, properties, bookings, and reviews with proper indexing, referencing, and data validation to ensure consistency and quick retrieval.</li>
+                <li><strong>Authentication Flow:</strong> Passport.js integration providing local authentication strategy with bcrypt password hashing, JWT token management, and secure session handling to protect user credentials.</li>
+                <li><strong>API Security:</strong> Implementation of security best practices including input validation, XSS protection, CSRF tokens, rate limiting, and proper error handling to prevent common web vulnerabilities.</li>
+                <li><strong>Responsive Design:</strong> CSS3 with Flexbox and Grid layouts combined with Bootstrap framework ensuring mobile-first responsive design that adapts beautifully to different screen sizes and orientations.</li>
+                <li><strong>State Management:</strong> Efficient client-side state management using React hooks and context API for handling user authentication state, booking data, and application-wide settings.</li>
+                <li><strong>Image Handling:</strong> Cloud-based image storage and optimization for property photos ensuring fast load times while maintaining image quality across devices.</li>
+            </ul>
+
+            <h2>Core Functionalities</h2>
+            <ul>
+                <li><strong>User Registration & Login:</strong> Secure authentication system with email verification, password reset functionality, and remember-me options for convenient access while maintaining security standards.</li>
+                <li><strong>Property CRUD Operations:</strong> Complete Create, Read, Update, Delete functionality for property listings with form validation, image uploads, and draft-saving capabilities for hosts.</li>
+                <li><strong>Search Engine:</strong> Advanced search algorithm with autocomplete, location-based queries, date range availability checking, and relevance-based result sorting for optimal user experience.</li>
+                <li><strong>Booking System:</strong> Comprehensive reservation management including date selection, price calculation, booking confirmation emails, and cancellation policies with automated availability updates.</li>
+                <li><strong>Review Management:</strong> User-generated content system allowing authenticated users to post reviews with ratings, photos, and detailed feedback, with moderation capabilities to maintain quality.</li>
+                <li><strong>Dashboard Interface:</strong> Separate dashboards for travelers and hosts displaying relevant metrics, upcoming bookings, property performance analytics, and quick access to key features.</li>
+                <li><strong>Notification System:</strong> Real-time notifications for booking confirmations, review postings, messages from hosts/guests, and important account updates to keep users informed.</li>
+            </ul>
+
+            <h2>MVC Architecture</h2>
+            <ul>
+                <li><strong>Model Layer:</strong> MongoDB schemas defining data structure for Users, Properties, Bookings, and Reviews with built-in validation, default values, and relationship management through references.</li>
+                <li><strong>View Layer:</strong> React components rendering dynamic user interfaces with conditional rendering, responsive layouts, and optimized re-rendering for smooth user interactions.</li>
+                <li><strong>Controller Layer:</strong> Express.js route handlers processing HTTP requests, implementing business logic, interacting with models, and sending appropriate responses with proper status codes.</li>
+                <li><strong>Separation of Concerns:</strong> Clean architecture separating data management, user interface, and application logic for improved code organization, testing capabilities, and scalability.</li>
+            </ul>
+
+            <h2>Security Features</h2>
+            <ul>
+                <li><strong>Data Encryption:</strong> Sensitive user data including passwords encrypted using industry-standard bcrypt hashing algorithms before storage, preventing unauthorized access even in case of data breaches.</li>
+                <li><strong>Input Sanitization:</strong> All user inputs validated and sanitized on both client and server sides to prevent SQL injection, XSS attacks, and other malicious input-based vulnerabilities.</li>
+                <li><strong>Secure Sessions:</strong> HTTP-only cookies, secure session management, and CSRF protection implemented to safeguard user sessions and prevent session hijacking attempts.</li>
+                <li><strong>Authorization Checks:</strong> Role-based access control ensuring users can only access and modify their own data, with property owners having exclusive rights to manage their listings.</li>
+            </ul>
+
+            <h2>Impact and Benefits</h2>
+            <ul>
+                <li><strong>Enhanced User Experience:</strong> Intuitive interface and smooth navigation reduce friction in the booking process, increasing user satisfaction and platform engagement.</li>
+                <li><strong>Scalable Architecture:</strong> Modular design and efficient database structure allow the platform to handle growing user base and increasing data volume without performance degradation.</li>
+                <li><strong>Community Trust:</strong> Review system builds trust between travelers and hosts, creating a transparent marketplace that benefits both parties.</li>
+                <li><strong>Business Value:</strong> Comprehensive booking and property management features provide a complete solution for travel accommodation marketplace operations.</li>
+            </ul>
+
+            <a href="https://wanderlust-u5lg.onrender.com" target="_blank" class="btn">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>View Live Website
+            </a>
+            <a href="https://github.com/DevvrathGiri/Wanderlust.git" target="_blank" class="btn">
+                <i class="fa-brands fa-github"></i>View Source Code
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>Copyright © Devvrath Giri. Made with <i class="fa-solid fa-heart"></i></p>
+    </div>
+
+</body>
+</html>

@@ -37,13 +37,11 @@ body{
     padding: 40px;
 }
 
-
 /* Profile section */
 
 .profile{
     text-align: center;
 }
-
 
 .profile img{
     height: 150px;
@@ -69,8 +67,6 @@ body{
     display: inline-block;
     margin-top: 10px;
 }
-
-
 
 /* contact information */
 
@@ -116,11 +112,9 @@ body{
     filter: grayscale(0) invert(0);
 }
 
-
 /* main content */
 
-/* Navigation ko  */
-
+/* Navigation */
 
 #navigation{
     border-bottom: 2px solid #3a3a3a;
@@ -145,7 +139,6 @@ nav a{
     color: #FFBF00;
 }
 
-
 /* about me */
 
 .heading{
@@ -169,7 +162,6 @@ nav a{
 #about{
     margin-bottom: 40px;
 }
-
 
 /* skills section */
 
@@ -205,7 +197,6 @@ nav a{
     transform: scale(1.1);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
-
 
 /* Education */
 #education{
@@ -266,8 +257,7 @@ nav a{
     border: 2px solid #3a3a3a;
 }
 
-
-/* Portfolio */
+/* Portfolio - WITH HOVER OVERLAY EFFECT */
 
 .project-container{
     margin-top: 30px;
@@ -281,43 +271,127 @@ nav a{
     border-radius: 12px;
     border: 1px solid #3a3a3a;
     overflow: hidden;
+    position: relative;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .project:hover{
     transform: translateY(-10px);
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
 .project img{
-    height: 180px;
+    height: 250px;
     width: 100%;
     object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
 }
 
+.project:hover img{
+    transform: scale(1.1);
+}
+
+/* Overlay Card Effect */
 .card{
-    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #2980b9);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    text-align: center;
+    transition: height 0.5s ease;
+}
+
+.project:hover .card{
+    height: 100%;
 }
 
 .card h3{
-    color: #e0e0e0;
-    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s;
+}
+
+.project:hover .card h3{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card p{
-    color: #a0a0a0;
+    color: #fff;
     line-height: 1.6;
     margin-bottom: 15px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+
+.project:hover .card p{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card span{
-    background-color: rgba(255, 191, 0, 0.1);
+    background-color: rgba(255, 191, 0, 0.2);
     color: #FFBF00;
-    padding: 4px 8px;
+    padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.75rem;
-    margin-right: 5px;
+    margin: 3px;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease 0.4s, transform 0.3s ease 0.4s;
 }
+
+.project:hover .card span{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: Project Link Icon */
+.card .project-link{
+    margin-top: 12px;
+    color: #ff004f;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 45px;
+    background: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease 0.5s, transform 0.3s ease 0.5s, background 0.3s ease;
+}
+
+.project:hover .card .project-link{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card .project-link:hover{
+    background: #FFBF00;
+    color: #fff;
+}
+
+/* Responsive Design */
 
 @media screen and (max-width:1200px) {
     .main-container{
@@ -337,7 +411,6 @@ nav a{
     }
 
     #navigation nav {
-        /* Adjust nav for smaller screens */
         justify-content: center;
         flex-wrap: wrap;
     }
@@ -347,16 +420,11 @@ nav a{
         justify-content: center;
         gap: 40px;
     }
+    
+    .project img{
+        height: 220px;
+    }
 }
-
-
-
-
-
-
-/*Mobile responsive style  */
-
-/* Add these additional media queries to your existing style.css */
 
 /* Small tablets and larger mobile devices (481px - 768px) */
 @media screen and (max-width: 768px) {
@@ -390,7 +458,7 @@ nav a{
     }
 
     .grid-container {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmin(100px, 1fr));
         gap: 20px;
     }
 
@@ -547,11 +615,11 @@ nav a{
     }
 
     .project img {
-        height: 150px;
+        height: 180px;
     }
 
     .card {
-        padding: 15px;
+        padding: 0 15px;
     }
 
     .card h3 {
@@ -567,9 +635,15 @@ nav a{
     .card span {
         font-size: 0.7rem;
         padding: 3px 6px;
-        margin-right: 4px;
-        margin-bottom: 4px;
-        display: inline-block;
+        margin: 2px;
+    }
+    
+    .card .project-link{
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+        line-height: 38px;
+        margin-top: 8px;
     }
 }
 
@@ -603,6 +677,10 @@ nav a{
 
     .card span {
         font-size: 0.65rem;
+    }
+    
+    .project img {
+        height: 150px;
     }
 }
 
