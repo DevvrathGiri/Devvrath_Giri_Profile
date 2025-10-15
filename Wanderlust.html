@@ -89,25 +89,24 @@
             transition: background 0.3s ease;
         }
 
-        .hero:hover::before {
+        /* .hero:hover::before {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(41, 128, 185, 0.5));
-        }
+        } */
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, visibility 0s 0.5s, transform 0.5s ease;
-        }
+         .hero-content {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 
-        .hero:hover .hero-content {
+        /* .hero:hover .hero-content {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
             transition: opacity 0.5s ease, visibility 0s 0s, transform 0.5s ease;
-        }
+        } */
 
         .hero h1 {
             font-size: 48px;
@@ -458,12 +457,12 @@
                 <li><strong>RESTful API Architecture:</strong> Developed comprehensive RESTful APIs using Node.js and Express.js to handle all server-side logic, including user authentication, property management, booking operations, and review systems with clean, maintainable code structure.</li>
                 <li><strong>MongoDB Database Integration:</strong> Integrated MongoDB as the primary database solution to store user information, property details, booking records, and reviews, ensuring data integrity, security, and optimal query performance through efficient schema design.</li>
                 <li><strong>User Authentication & Authorization:</strong> Implemented secure user registration and login system with Passport.js, featuring role-based access control, password encryption, and session management to protect user accounts and sensitive data.</li>
-                <li><strong>Property Listing Management:</strong> Comprehensive property management system allowing hosts to create, edit, and delete their listings with detailed information including descriptions, amenities, pricing, location data, and high-quality images.</li>
+                <!-- <li><strong>Property Listing Management:</strong> Comprehensive property management system allowing hosts to create, edit, and delete their listings with detailed information including descriptions, amenities, pricing, location data, and high-quality images.</li>
                 <li><strong>Review and Rating System:</strong> Built-in community feedback mechanism enabling users to post detailed reviews and ratings for properties they've visited, helping future travelers make informed decisions while fostering trust within the platform.</li>
                 <li><strong>Advanced Search and Filtering:</strong> Powerful search functionality with filters for location, price range, amenities, property type, and guest capacity, making it easy for users to find their perfect accommodation.</li>
                 <li><strong>Booking Management:</strong> End-to-end booking system handling reservation requests, availability checking, booking confirmations, and booking history tracking with real-time updates to prevent double bookings.</li>
                 <li><strong>Interactive Map Integration:</strong> Location-based features displaying properties on interactive maps, helping users visualize property locations and explore nearby attractions and amenities.</li>
-                <li><strong>User Profiles:</strong> Personalized user profiles showcasing booking history, saved properties, posted reviews, and for hosts, their property listings with comprehensive dashboards for easy management.</li>
+                <li><strong>User Profiles:</strong> Personalized user profiles showcasing booking history, saved properties, posted reviews, and for hosts, their property listings with comprehensive dashboards for easy management.</li> -->
             </ul>
 
             <h2>Technical Implementation</h2>
